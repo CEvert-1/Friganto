@@ -59,32 +59,6 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           </Suspense>
         </div>
       </div>
-      <div className="flex flex-col gap-8 lg:gap-12">
-        <div className="flex flex-col gap-4 lg:gap-8 border-b border-gray-200 pb-3 lg:pb-6">
-          <Heading level={"h2"} className="text-[10px] lg:text-xl font-medium">
-            Lorem ipsum dolor sit amet consectetur
-          </Heading>
-          <Text as="p" className="text-[10px]">
-            Lorem ipsum dolor sit amet consectetur. Velit tristique nisl montes
-            nisl dui ac viverra scelerisque. Diam quis lectus at id porttitor
-            placerat ornare. Viverra quam vulputate curabitur at pulvinar
-            pellentesque aenean. Dui hac interdum mi fermentum tellus laoreet
-            nunc in.
-          </Text>
-        </div>
-        <div className="flex flex-col gap-4 lg:gap-8 border-b border-gray-200 pb-3 lg:pb-6">
-          <Heading level={"h2"} className="text-[10px] lg:text-xl font-medium">
-            Lorem ipsum dolor sit amet consectetur
-          </Heading>
-          <Text as="p" className="text-[10px]">
-            Lorem ipsum dolor sit amet consectetur. Velit tristique nisl montes
-            nisl dui ac viverra scelerisque. Diam quis lectus at id porttitor
-            placerat ornare. Viverra quam vulputate curabitur at pulvinar
-            pellentesque aenean. Dui hac interdum mi fermentum tellus laoreet
-            nunc in.
-          </Text>
-        </div>
-      </div>
       <div data-testid="related-products-container" className="max-lg:-mt-8">
         <Suspense fallback={<SkeletonRelatedProducts />}>
           <RelatedProducts product={product} countryCode={countryCode} />
