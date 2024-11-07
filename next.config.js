@@ -29,6 +29,10 @@ const nextConfig = withStoreConfig({
         protocol: "https",
         hostname: "medcsgi5905iop68k8rl6n0.nomodo.app",
       },
+       {
+        protocol: "https",
+        hostname: "medcsmefh85iopes0n2jc70.nomodo.app",
+      },
     ],
   },
 })
