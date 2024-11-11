@@ -36,8 +36,13 @@ export default function VideoAndInformation() {
     <section className="flex flex-col gap-[42px] content-container lg:px-16 mt-16 lg:mt-16">
       <div className="flex flex-col gap-6">
         <video
-          src=""
-          className="h-full min-h-[194px] max-h-[670px] w-full bg-gray-200"
+          src="/video/homepage.mp4"
+          autoPlay
+          loop
+          muted
+          controls
+          playsInline
+          className="h-full w-full bg-gray-200"
         ></video>
         <Text as="p" className="text-xs lg:text-base text-center">
           Wine connoisseurs know that red wine should be stored between 55-60F

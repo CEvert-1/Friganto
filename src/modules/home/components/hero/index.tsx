@@ -1,24 +1,24 @@
 import { Button, Heading, Text } from "@medusajs/ui"
 import heroImage from "../../../../../public/images/IMAGE 1.jpg"
+import Image from "next/image"
 
 // Static import
 
 const Hero = () => {
   return (
     <div className="h-full w-full  relative grid grid-cols-1 lg:grid-cols-5">
-      <div className="w-full col-span-2 relative h-[430px] lg:h-[720px]">
-        <video
-          src="/video/homepage.mp4"
-          autoPlay
-          loop
-          muted
-          controls
-          playsInline
-          poster={heroImage.src}
-          className="w-full h-full object-cover object-center"
-        >
-          Your browser does not support the video tag.
-        </video>
+      <div className="w-full col-span-2 h-full relative ">
+        <Image
+          src={heroImage} // Use static import
+          alt="hero_image"
+          layout="cover"
+          objectPosition="center"
+          objectFit="cover"
+          // blurDataURL="data:image/jpeg;base64,...your_base64_data..." // Uncomment if using blurDataURL
+          placeholder="blur"
+          priority
+          className="w-full h-full "
+        />
       </div>
       <div className="flex-1 flex flex-col gap-4 col-span-3 lg:gap-8 items-start justify-center p-6 lg:p-[76px]">
         <Heading

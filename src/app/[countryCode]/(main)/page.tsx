@@ -83,7 +83,7 @@ export default async function Home({
           <Text as="p" className=" text-center">
             Read the results of the{" "}
             <a
-              href="/Friganto Report.pdf"
+              href="/report/Friganto Report.pdf"
               download
               className="text-xs font-semibold"
             >
@@ -93,7 +93,11 @@ export default async function Home({
         </div>
         <Text as="p" className="hidden lg:block text-center">
           Want to know more? Read the results of the{" "}
-          <a href="/Friganto Report.pdf" download className=" font-semibold">
+          <a
+            href="/report/Friganto_Report.pdf"
+            download
+            className=" font-semibold"
+          >
             Friganto Research Study.
           </a>
         </Text>
