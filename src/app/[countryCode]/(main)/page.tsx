@@ -15,47 +15,6 @@ export const metadata: Metadata = {
   description: "Decant and serve your fine wine at the proper temperature",
 }
 
-const getCollectionsWithProducts = cache(
-  async (
-    countryCode: string
-  ): Promise<ProductCollectionWithPreviews[] | null> => {
-    const { collections } = await getCollectionsList(0, 3)
-
-    if (!collections) {
-      return null
-    }
-
-    const collectionIds = collections.map((collection) => collection.id)
-
-    await Promise.all(
-      collectionIds.map((id) =>
-        getProductsList({
-          queryParams: { collection_id: [id] },
-          countryCode,
-        })
-      )
-    ).then((responses) =>
-      responses.forEach(({ response, queryParams }) => {
-        let collection
-
-        if (collections) {
-          collection = collections.find(
-            (collection) => collection.id === queryParams?.collection_id?.[0]
-          )
-        }
-
-        if (!collection) {
-          return
-        }
-
-        collection.products = response.products as unknown as Product[]
-      })
-    )
-
-    return collections as unknown as ProductCollectionWithPreviews[]
-  }
-)
-
 export default async function Home({
   params: { countryCode },
 }: {
@@ -123,14 +82,20 @@ export default async function Home({
           </Text>
           <Text as="p" className=" text-center">
             Read the results of the{" "}
-            <span className="text-xs font-semibold">
+            <a
+              href="/Friganto Report.pdf"
+              download
+              className="text-xs font-semibold"
+            >
               Friganto Research Study.
-            </span>
+            </a>
           </Text>
         </div>
         <Text as="p" className="hidden lg:block text-center">
           Want to know more? Read the results of the{" "}
-          <span className="font-semibold">Friganto Research Study.</span>
+          <a href="/Friganto Report.pdf" download className=" font-semibold">
+            Friganto Research Study.
+          </a>
         </Text>
         <Text as="p" className="max-lg:text-xs text-center">
           Don’t have a wine fridge, Friganto cools wine from 72F to 60F in 30

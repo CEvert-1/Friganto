@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import {
   About1,
@@ -6,24 +8,84 @@ import {
   About4,
   AboutHero,
 } from "../../../../../public/icons"
+
+import M1 from "../../../../../public/images/about/M1.jpg"
+import M2 from "../../../../../public/images/about/M2.jpg"
+import M3 from "../../../../../public/images/about/M3.jpg"
+import M4 from "../../../../../public/images/about/M4.jpg"
+import M5 from "../../../../../public/images/about/M5.jpg"
+import MT1 from "../../../../../public/images/about/MT1.jpeg"
+import MT2 from "../../../../../public/images/about/MT2.jpg"
+import MT3 from "../../../../../public/images/about/MT3.jpeg"
+import MT4 from "../../../../../public/images/about/MT4.jpg"
+import MT5 from "../../../../../public/images/about/MT5.jpg"
+import MT6 from "../../../../../public/images/about/MT6.jpeg"
+import MT7 from "../../../../../public/images/about/MT7.jpg"
+import MT8 from "../../../../../public/images/about/MT8.jpg"
+import MT9 from "../../../../../public/images/about/MT9.jpg"
+import MT10 from "../../../../../public/images/about/MT10.jpg"
+import MT11 from "../../../../../public/images/about/MT11.jpg"
+
 import { Heading, Text } from "@medusajs/ui"
+import useEmblaCarousel from "embla-carousel-react"
+import { useCallback, useEffect, useState } from "react"
+import Autoplay from "embla-carousel-autoplay"
+import { ChevronLeft, ChevronRight } from "@medusajs/icons"
 
 const aboutImages = [
-  {
-    image: About1,
-  },
-  {
-    image: About2,
-  },
-  {
-    image: About3,
-  },
-  {
-    image: About4,
-  },
+  M1,
+  M2,
+  M3,
+  M4,
+  M5,
+  MT1,
+  MT2,
+  MT3,
+  MT4,
+  MT5,
+  MT6,
+  MT7,
+  MT8,
+  MT9,
+  MT10,
+  MT11,
 ]
 
+const OPTIONS = {
+  loop: true,
+  slidesToScroll: 1,
+  draggable: true,
+  speed: 5,
+}
+
+const autoplayOptions = {
+  delay: 2500,
+}
+
 export default function AboutPage() {
+  const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [
+    Autoplay(autoplayOptions),
+  ])
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+  }, [emblaApi])
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi])
+
+  useEffect(() => {
+    if (!emblaApi) return
+
+    const handleSelect = () => {
+      setActiveIndex(emblaApi.selectedScrollSnap())
+    }
+
+    emblaApi.on("select", handleSelect)
+    handleSelect() // Set initial active index
+  }, [emblaApi])
   return (
     <section className="flex flex-col gap-[42px] lg:gap-16 pb-16">
       <div className="flex flex-col lg:flex-row gap-6 lg:gap-[42px]">
@@ -87,19 +149,31 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 lg:gap-6 max-lg:px-6 lg:max-w-[90vw] lg:ml-auto ">
-        {aboutImages.map((about, index) => (
-          <div key={index} className="w-full">
-            <Image
-              src={about.image}
-              alt={`${index}`}
-              className="w-full lg:w-[318px] lg:h-[388px] aspect-auto object-center object-cover"
-              width={600}
-              height={600}
-              priority
-            />
+      {/* Embla Carousel */}
+      <div className="relative mt-8">
+        <div className="embla" ref={emblaRef}>
+          <div className="embla__container">
+            {aboutImages.map((image, index) => (
+              <div className="embla__slide" key={index}>
+                <div className="w-full min-h-[224px] lg:min-h-[388px] h-full overflow-hidden">
+                  <Image
+                    src={image}
+                    alt={`About Image ${index + 1}`}
+                    className="w-full h-full  object-cover object-center aspect-auto"
+                    width={1200}
+                    height={800}
+                    priority
+                  />
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        <div className="flex items-center justify-center gap-4 w-full mt-4 lg:mt-6 ">
+          <ChevronLeft onClick={scrollPrev} />
+          <ChevronRight onClick={scrollNext} />
+        </div>
       </div>
     </section>
   )
