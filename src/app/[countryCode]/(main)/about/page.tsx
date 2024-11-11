@@ -140,7 +140,7 @@ export default function AboutPage() {
           <div className="lg:mt-[17px] max-lg:text-xs">
             Explore Wine with Mike and Friganto on{" "}
             <a
-              href="CellarTracker.com"
+              href="https://www.cellartracker.com/user.asp?iUserOverride=970566"
               target="_blank"
               className="max-lg:text-xs font-semibold"
             >
