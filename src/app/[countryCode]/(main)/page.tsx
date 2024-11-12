@@ -59,7 +59,7 @@ export default async function Home({
           level={"h2"}
           className="text-base lg:text-2xl font-medium text-center"
         >
-          Lorem ipsum dolor sit amet consectetur
+          Shop Our Latest Products
         </Heading>
         <Suspense>
           <Carousel productPreviews={productPreviews} />
