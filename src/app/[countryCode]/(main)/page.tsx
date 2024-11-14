@@ -82,13 +82,13 @@ export default async function Home({
           </Text>
           <Text as="p" className=" text-center">
             Read the results of the{" "}
-            <a
-              href="/report/Friganto Report.pdf"
-              download
-              className="text-xs font-semibold"
-            >
-              Friganto Research Study.
-            </a>
+             <a
+            href="/report/Friganto_Report.pdf"
+            download
+            className="text-xs font-semibold"
+          >
+            Friganto Research Study.
+          </a>
           </Text>
         </div>
         <Text as="p" className="hidden lg:block text-center">

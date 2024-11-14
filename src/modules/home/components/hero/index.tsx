@@ -35,7 +35,7 @@ const Hero = () => {
         <a href="/shop" className="max-lg:w-full">
           <Button
             variant="primary"
-            className="rounded-full px-6 py-2 lg:py-3.5 max-lg:w-full btn1"
+            className="rounded-full px-6 py-2 lg:py-3.5 btn1"
           >
             Buy Yours Today
           </Button>
