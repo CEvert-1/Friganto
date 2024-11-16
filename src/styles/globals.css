@@ -123,7 +123,14 @@
 }
 .embla__container {
   display: flex;
-  height: 443px;
+  flex: 0 0 auto;
+  touch-action: pan-y;
+}
+
+.embla__slide {
+  position: relative;
+  min-width: 100%;
+  flex: 0 0 auto;
 }
 
 @media screen and (min-width: 1024px) {
@@ -160,7 +167,7 @@
 
 .embla__controls {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1.5fr;
   justify-content: space-between;
   gap: 1.2rem;
   margin-top: 1.8rem;
@@ -173,7 +180,7 @@
 }
 
 .embla__slide {
-  margin-right: 8px;
+  margin-right: 10px;
   margin-left: 20px;
 }
 
