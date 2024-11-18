@@ -31,6 +31,11 @@ import useEmblaCarousel from "embla-carousel-react"
 import { useCallback, useEffect, useState } from "react"
 import Autoplay from "embla-carousel-autoplay"
 import { ChevronLeft, ChevronRight } from "@medusajs/icons"
+import { IoRestaurant } from "react-icons/io5"
+import { BiDrink } from "react-icons/bi"
+import { FaMapMarkerAlt } from "react-icons/fa"
+import Link from "next/link"
+import { useParams } from "next/navigation"
 
 const aboutImages = [
   M1,
@@ -63,6 +68,9 @@ const autoplayOptions = {
 }
 
 export default function AboutPage() {
+  const params = useParams()
+  const countryCode = params.countryCode
+
   const [emblaRef, emblaApi] = useEmblaCarousel(OPTIONS, [
     Autoplay(autoplayOptions),
   ])
@@ -155,11 +163,11 @@ export default function AboutPage() {
           <div className="embla__container">
             {aboutImages.map((image, index) => (
               <div className="embla__slide" key={index}>
-                <div className="w-full min-h-[224px] lg:min-h-[388px] h-full overflow-hidden">
+                <div className="w-full h-full overflow-hidden">
                   <Image
                     src={image}
                     alt={`About Image ${index + 1}`}
-                    className="w-full h-full  object-cover object-center aspect-auto"
+                    className="w-full h-[500px] object-cover object-center aspect-square"
                     width={1200}
                     height={800}
                     priority
@@ -173,6 +181,41 @@ export default function AboutPage() {
         <div className="flex items-center justify-center gap-4 w-full mt-4 lg:mt-6 ">
           <ChevronLeft onClick={scrollPrev} />
           <ChevronRight onClick={scrollNext} />
+        </div>
+      </div>
+
+      {/* New Good Life Section */}
+      <div className="flex flex-col items-center text-center gap-6 mt-4">
+        <Heading level="h2" className="text-3xl lg:text-4xl font-medium">
+          THE GOOD LIFE
+        </Heading>
+        
+        <Text as="p" className="max-w-2xl text-base lg:text-lg">
+          Eat, Drink, Travel, that's what we mean when we say The Good Life. 
+          Explore with us and find your inspiration to live The Good Life.
+        </Text>
+
+        <div className="flex justify-center gap-32 mt-8">
+          <Link href={`/${countryCode}/eat`} className="flex flex-col items-center gap-3">
+            <div className="w-24 h-24">
+              <IoRestaurant className="w-full h-full text-[#3fbaeb]" />
+            </div>
+            <Text className="text-lg font-semibold">EAT</Text>
+          </Link>
+
+          <Link href={`/${countryCode}/drink`} className="flex flex-col items-center gap-3">
+            <div className="w-24 h-24">
+              <BiDrink className="w-full h-full text-[#3fbaeb]" />
+            </div>
+            <Text className="text-lg font-semibold">DRINK</Text>
+          </Link>
+
+          <Link href={`/${countryCode}/travel`} className="flex flex-col items-center gap-3">
+            <div className="w-24 h-24">
+              <FaMapMarkerAlt className="w-full h-full text-[#3fbaeb]" />
+            </div>
+            <Text className="text-lg font-semibold">TRAVEL</Text>
+          </Link>
         </div>
       </div>
     </section>
