@@ -190,29 +190,38 @@ export default function AboutPage() {
         <Heading level="h2" className="text-3xl lg:text-4xl font-medium">
           THE GOOD LIFE
         </Heading>
-        
+
         <Text as="p" className="max-w-2xl text-base lg:text-lg">
-          Eat, Drink, Travel, that&apos;s what we mean when we say The Good Life. 
-          Explore with us and find your inspiration to live The Good Life.
+          Eat, Drink, Travel, that&apos;s what we mean when we say The Good
+          Life. Explore with us and find your inspiration to live The Good Life.
         </Text>
 
-        <div className="flex justify-center gap-32 mt-8">
-          <Link href={`/${countryCode}/eat`} className="flex flex-col items-center gap-3">
-            <div className="w-24 h-24">
+        <div className="flex justify-center gap-12 lg:gap-32 mt-8">
+          <Link
+            href={`/${countryCode}/eat`}
+            className="flex flex-col items-center gap-3"
+          >
+            <div className="w-14 h-14 lg:w-24 lg:h-24">
               <IoRestaurant className="w-full h-full text-[#3fbaeb]" />
             </div>
             <Text className="text-lg font-semibold">EAT</Text>
           </Link>
 
-          <Link href={`/${countryCode}/drink`} className="flex flex-col items-center gap-3">
-            <div className="w-24 h-24">
+          <Link
+            href={`/${countryCode}/drink`}
+            className="flex flex-col items-center gap-3"
+          >
+            <div className="w-14 h-14 lg:w-24 lg:h-24">
               <BiDrink className="w-full h-full text-[#3fbaeb]" />
             </div>
             <Text className="text-lg font-semibold">DRINK</Text>
           </Link>
 
-          <Link href={`/${countryCode}/travel`} className="flex flex-col items-center gap-3">
-            <div className="w-24 h-24">
+          <Link
+            href={`/${countryCode}/travel`}
+            className="flex flex-col items-center gap-3"
+          >
+            <div className="w-14 h-14 lg:w-24 lg:h-24">
               <FaMapMarkerAlt className="w-full h-full text-[#3fbaeb]" />
             </div>
             <Text className="text-lg font-semibold">TRAVEL</Text>
