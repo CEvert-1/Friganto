@@ -65,6 +65,7 @@ const OPTIONS = {
 
 const autoplayOptions = {
   delay: 2500,
+  stopOnInteraction: false,
 }
 
 export default function AboutPage() {
@@ -191,7 +192,7 @@ export default function AboutPage() {
         </Heading>
         
         <Text as="p" className="max-w-2xl text-base lg:text-lg">
-          Eat, Drink, Travel, that's what we mean when we say The Good Life. 
+          Eat, Drink, Travel, that&apos;s what we mean when we say The Good Life. 
           Explore with us and find your inspiration to live The Good Life.
         </Text>
 
