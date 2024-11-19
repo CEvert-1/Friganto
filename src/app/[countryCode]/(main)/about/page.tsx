@@ -167,7 +167,7 @@ export default function AboutPage() {
                   <Image
                     src={image}
                     alt={`About Image ${index + 1}`}
-                    className="w-full h-[500px] object-cover object-center aspect-square"
+                    className="w-full h-full lg:h-[500px] object-cover object-center aspect-square"
                     width={1200}
                     height={800}
                     priority
