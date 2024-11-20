@@ -158,7 +158,8 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-      {/* Embla Carousel */}
+
+      {/* Embla Carousel
       <div className="relative mt-8">
         <div className="embla" ref={emblaRef}>
           <div className="embla__container">
@@ -183,7 +184,7 @@ export default function AboutPage() {
           <ChevronLeft onClick={scrollPrev} />
           <ChevronRight onClick={scrollNext} />
         </div>
-      </div>
+      </div> */}
 
       {/* New Good Life Section */}
       <div className="flex flex-col items-center text-center gap-6 mt-4">
