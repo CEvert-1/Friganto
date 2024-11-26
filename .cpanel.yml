@@ -1,9 +1,19 @@
 ---
 deployment:
   tasks:
+    # Define the deployment directory
     - export DEPLOYPATH=/home/mike/public_html/
 
+    # Install dependencies
     - /usr/local/bin/npm ci
+
+    # Build the Next.js project
     - /usr/local/bin/npm run build
 
-    - /bin/rsync -a --exclude='.git' --exclude='node_modules' dist/ $DEPLOYPATH
+    # Deploy the `.next/` directory and `public/` assets to the deployment path
+    - /bin/rsync -a --exclude='.git' --exclude='node_modules' .next/ $DEPLOYPATH/.next/
+    - /bin/rsync -a --exclude='.git' --exclude='node_modules' public/ $DEPLOYPATH/public/
+    - /bin/rsync -a --exclude='.git' --exclude='node_modules' package.json $DEPLOYPATH/
+
+    # Start the production server
+    - cd $DEPLOYPATH && NODE_ENV=production node server.js
