@@ -5,15 +5,20 @@ deployment:
     - export DEPLOYPATH=/home/mike/public_html/
 
     # Install dependencies
-    - /usr/local/bin/npm ci
+    - /usr/local/bin/npm install
 
     # Build the Next.js project
     - /usr/local/bin/npm run build
 
-    # Deploy the `.next/` directory and `public/` assets to the deployment path
+    # Deploy the `.next/` directory to the deployment path
     - /bin/rsync -a --exclude='.git' --exclude='node_modules' .next/ $DEPLOYPATH/.next/
+
+    # Deploy the `public/` directory for static assets
     - /bin/rsync -a --exclude='.git' --exclude='node_modules' public/ $DEPLOYPATH/public/
+
+    # Deploy `package.json` and required server files
     - /bin/rsync -a --exclude='.git' --exclude='node_modules' package.json $DEPLOYPATH/
+    - /bin/rsync -a --exclude='.git' --exclude='node_modules' required-server-files.json $DEPLOYPATH/
 
     # Start the production server
-    - cd $DEPLOYPATH && NODE_ENV=production node server.js
+    - cd $DEPLOYPATH && NODE_ENV=production node .next/standalone/server.js
