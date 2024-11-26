@@ -2,5 +2,8 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/mike/public_html/
-    - /bin/cp -R src $DEPLOYPATH
-    - /bin/cp -R public $DEPLOYPATH
+
+    - /usr/local/bin/npm ci
+    - /usr/local/bin/npm run build
+
+    - /bin/rsync -a --exclude='.git' --exclude='node_modules' dist/ $DEPLOYPATH
